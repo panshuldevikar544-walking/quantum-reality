@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#02030a" />
+    <meta name="description" content="Quantum Reality: a cinematic, interactive introduction to quantum computing." />
+    <title>Quantum Reality</title>
+    <style>
+      /* Boot screen: shown until React mounts. Kept inline so it paints instantly. */
+      html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; }
+      #boot {
+        position: fixed; inset: 0; display: grid; place-items: center;
+        background: #02030a; z-index: 100; transition: opacity 0.8s ease;
+      }
+      #boot.done { opacity: 0; pointer-events: none; }
+      #boot i {
+        width: 6px; height: 6px; border-radius: 50%; background: #3fe0ff;
+        box-shadow: 0 0 12px 3px rgba(63, 224, 255, 0.7);
+        animation: boot-pulse 1.4s ease-in-out infinite;
+      }
+      @keyframes boot-pulse { 50% { transform: scale(1.8); opacity: 0.5; } }
+      @media (prefers-reduced-motion: reduce) { #boot i { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <div id="boot" aria-hidden="true"><i></i></div>
+    <div id="root"></div>
+    <noscript style="color:#e8eeff;font-family:sans-serif;padding:2rem;display:block">
+      Quantum Reality needs JavaScript to run.
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
